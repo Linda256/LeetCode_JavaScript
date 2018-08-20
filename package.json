@@ -1,0 +1,22 @@
+{
+  "name": "javascript_leetcode",
+  "version": "1.0.0",
+  "description": "LeetCode problems",
+  "main": "2_AddTwoNumbers.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linda256/JavaScript_LeetCode.git"
+  },
+  "author": "Linda Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Linda256/JavaScript_LeetCode/issues"
+  },
+  "homepage": "https://github.com/Linda256/JavaScript_LeetCode#readme",
+  "devDependencies": {
+    "jest": "^23.5.0"
+  }
+}
