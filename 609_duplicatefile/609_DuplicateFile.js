@@ -51,7 +51,7 @@ return result;
 
 */
 
-var findDuplicate = function(paths){
+ var findDuplicate = function(paths){
   // create output [];
 // call contentObj to change the paths into object using content as key, path as value
 // if value of the key length > 1 push value into output
@@ -104,3 +104,6 @@ const paths = ["root/a 1.txt(abcd) 2.txt(efgh)", "root/c 3.txt(abcd)", "root/c/d
 let result = contentObj(paths);
 let result2 = findDuplicate(paths);
 console.log(result2);
+
+// export { contentObj, findDuplicate }
+module.exports = findDuplicate;
