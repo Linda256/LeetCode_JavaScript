@@ -1,9 +1,9 @@
 /**
  * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
+ function ListNode(val) {
+     this.val = val;
+      this.next = null;
+ }
  */
 /**
  * @param {ListNode} l1
@@ -37,29 +37,61 @@ while val of l1 not null or l2 not null or carry  not null,
   currNode = currNode.next
 return head.next
 */
-var addTwoNumbers = function(l1, l2) {
+
+function ListNode(val) {
+     this.val = val;
+      this.next = null;
+ }
+// var addTwoNumbers = function(l1, l2) {
+//     let head = new ListNode(0);
+//     let currNode = head;
+//     let carry = 0;
+//     while (l1!== null || l2!== null || carry !=0){
+//         let val = 0 ;
+//         if (l1 != null){
+//             val = val + l1.val;
+//             l1 = l1.next;
+//         }
+//         if (l2 != null){
+//             val = val + l2.val;
+//             l2 = l2.next;
+//         }
+//         val = val + carry;
+//         carry = 0;
+//         if (val >=10) {
+//             currNode.next = new ListNode(val-10);
+//             carry=1;
+//         } else {
+//             currNode.next = new ListNode(val);
+//         }
+//         currNode = currNode.next;
+//     }
+//     return head.next;
+// };
+
+
+var addTwoNumbers = function(l1,l2){
     let head = new ListNode(0);
-    let currNode = head;
     let carry = 0;
-    while (l1!== null || l2!== null || carry !=0){
-        let val = 0 ;
-        if (l1 != null){
-            val = val + l1.val;
+    let curr = head;
+    while(l1!==null || l2!= null || carry !=0){
+        let val = 0+carry;
+        carry=0;
+        if (l1!==null ){
+            val += l1.val;
             l1 = l1.next;
         }
-        if (l2 != null){
-            val = val + l2.val;
+        if (l2!==null ){
+            val += l2.val;
             l2 = l2.next;
         }
-        val = val + carry;
-        carry = 0;
-        if (val >=10) {
-            currNode.next = new ListNode(val-10);
+        if (val >=10){
+            val=val-10;
             carry=1;
-        } else {
-            currNode.next = new ListNode(val);
         }
-        currNode = currNode.next;
+        curr.next= new ListNode(val);
+        curr=curr.next;
     }
     return head.next;
-};
+}
+
