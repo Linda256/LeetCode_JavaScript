@@ -55,17 +55,14 @@ var searchMatrix2 = function(matrix, target) {
             // if target < matrix[r][c] c--
             // else return true
     // return false
+
     if (matrix.length===0) return false;
     let r=0;
     let c=matrix[0].length-1;
      while(r<matrix.length && c>=0){
-        if (target > matrix[r][c]) {
-            r++;
-        } else if (target < matrix[r][c]){
-            c--;
-        } else {
-            return true
-        }
+        if (target > matrix[r][c]) r++;
+        else if (target < matrix[r][c]) c--;
+        else return true
      }
     return false;
 };
@@ -81,6 +78,6 @@ let matrix = [
 
 //console.log(binarySearch(arr,5));
 //console.log(searchMatrix(matrix,24));
-//console.log(searchMatrix2(matrix,100));
+console.log(searchMatrix2(matrix,13));
 
 
