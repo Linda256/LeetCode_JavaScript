@@ -74,7 +74,7 @@ var addTwoNumbers = function(l1,l2){
     let head = new ListNode(0);
     let carry = 0;
     let curr = head;
-    while(l1!==null || l2!= null || carry !=0){
+    while(l1!==null || l2!= null || carry !== 0){
         let val = 0+carry;
         carry=0;
         if (l1!==null ){
