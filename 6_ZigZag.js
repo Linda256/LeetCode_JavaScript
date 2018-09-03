@@ -39,12 +39,20 @@ var convert = function(s, numRows) {
             i++;
         }
     }
-    console.log(zigzag);
-    let combine=[];
-    zigzag.forEach(row =>{
-        combine=combine.concat(row)
+    //console.log(zigzag);
+    // let combine=[];
+    // zigzag.forEach(row =>{
+    //     combine=combine.concat(row)
+    // })
+    // return combine.join('');
+
+    let result='';
+    zigzag.forEach( row=>{
+        row.forEach(c =>{
+            result=result+c;
+        })
     })
-    return combine.join('');
+    return result;
 }
 
 let s = "PAYPALISHIRING", numRows = 3;
