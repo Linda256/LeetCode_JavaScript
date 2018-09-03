@@ -25,7 +25,7 @@ I:number
 O:number
 E: negative number, 0
 */
-var reverse = function(x) {
+var reverse1 = function(x) {
   if (Math.abs(x)>=0 & Math.abs(x)<10) return x;
     let s=x.toString();
     let negative = false;
@@ -44,7 +44,7 @@ var reverse = function(x) {
     return temp<Math.pow(2,31)-1 && temp>Math.pow(-2,31) ? temp : 0;
 };
 
-var reverse2 = function(x) {
+var reverse = function(x) {
   /*
   if |x| between 0 and 9 return x
   if x<0 x=|x| negative = true
@@ -74,6 +74,7 @@ var reverse2 = function(x) {
   return temp<Math.pow(2,31)-1 && temp>Math.pow(-2,31) ? temp : 0;
 };
 
-console.log(reverse2(-134569999999999));
+//console.log(reverse(-134569999999999));
 
+module.exports.reverse = reverse;
 
