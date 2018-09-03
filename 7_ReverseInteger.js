@@ -26,22 +26,24 @@ O:number
 E: negative number, 0
 */
 var reverse = function(x) {
+  if (Math.abs(x)>=0 & Math.abs(x)<10) return x;
     let s=x.toString();
     let negative = false;
     if (x<0) {
         negative = true;
         s=s.slice(1);
-        console.log(s);
     }
-    let chArr = s.split('');
+
     let result='';
     let len=s.length-1;
-    chArr.forEach((c) =>{
-        while(len>=0){
-        result=result+chArr[len];
-        len--;
-        }
-    })
+    for (let i=len;i>=0;i--){
+        result=result+s[i];
+    }
+
     let temp = negative===true ? -Number(result) : Number(result);
     return temp<Math.pow(2,31)-1 && temp>Math.pow(-2,31) ? temp : 0;
 };
+
+console.log(reverse(-13456));
+
+
