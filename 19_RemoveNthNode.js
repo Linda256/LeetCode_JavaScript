@@ -35,9 +35,11 @@ start from head again,
 move to length-n,
 remove the node
  */
+ //method 1 two pass
 var removeNthFromEnd = function(head, n) {
     let len = 0;
     let curr = head;
+    curr.prev = head;
     while(curr!==null){
         len++;
         curr=curr.next;
@@ -54,4 +56,21 @@ var removeNthFromEnd = function(head, n) {
     curr.next=curr.next.next
     return head;
 
+};
+
+//method 2 one pass
+var removeNthFromEnd = function(head, n) {
+    let newNode = new ListNode(0);
+    newNode.next=head;
+    let slow = newNode;
+    let fast = head;
+    for (let i=0; i<n; i++){
+        fast=fast.next;
+    }
+    while(fast!==null){
+        fast=fast.next;
+        slow=slow.next;
+    }
+    slow.next=slow.next.next;
+    return newNode.next;
 };
