@@ -40,6 +40,7 @@ var StockSpanner = function() {
  * @param {number} price
  * @return {number}
  */
+ //method 1
 StockSpanner.prototype.next = function(price) {
     let count =1;
     if (this.span.length===0){
@@ -64,8 +65,37 @@ StockSpanner.prototype.next = function(price) {
 
     return count;
 };
+
+//method2 better perfomance: consider the count of previous number
+StockSpanner.prototype.next2 = function(price) {
+    let count =1;
+    if (this.span.length===0){
+        let curr = [price,1]
+        this.span.push(curr);
+        console.log('span',this.span);
+    } else{
+        let i=this.span.length;
+        let j=i-1;
+        while(j>=0){
+            if (price<this.span[j][0]) break;
+            if (price>=this.span[j][0]){
+              count= count+this.span[j][1];
+               j=j-this.span[j][1];
+            }
+        }
+        let curr=[price,count];
+        this.span.push(curr);
+    }
+    return count;
+};
 /**
  * Your StockSpanner object will be instantiated and called as such:
  * var obj = Object.create(StockSpanner).createNew()
  * var param_1 = obj.next(price)
  */
+
+ var sp = new StockSpanner();
+ sp.next2(100);
+ sp.next2(80);
+ sp.next2(70);
+ console.log(sp.next2(200));
