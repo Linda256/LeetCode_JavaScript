@@ -20,18 +20,11 @@ Output: false
  * @return {boolean}
  */
 /*
-possible number: 1,6,8,9,0
-convert num to string nStr
-
-let newStr=''
-check from position 0 to num length
-    if '23457' contains num[i] return false
-    if num[i] is 1,8,0 newStr += num[i];
-    else if num[i] is 6 newStr += '9';
-    else if num[i] is 9 newStr += '6';
-
-return newStr === num
+compare the numbers at both side of the num
+if they are not equal
+return false;
 */
+//method 1
 var isStrobogrammatic = function(num) {
     let f = '23457';
     let same = '180';
@@ -48,6 +41,31 @@ var isStrobogrammatic = function(num) {
     return true;
 };
 
-let num='0';
-let result = isStrobogrammatic(num);
+//method 2: use object to improve performance
+const isStrobogrammatic2 = (num) => {
+    let dict = {}
+    dict['6'] = '9'
+    dict['9'] = '6'
+    dict['0'] = '0'
+    dict['1'] = '1'
+    dict['8'] = '8'
+
+    let l = 0, r = num.length - 1
+
+    while (l <= r) {
+        if (!dict[num[l]]) {
+            return false
+        } else if (dict[num[l]] !== num[r]) {
+            return false
+        }
+
+        l++
+        r--
+    }
+
+    return true
+};
+
+let num='1001';
+let result = isStrobogrammatic2(num);
 console.log(result);
