@@ -55,3 +55,29 @@ var lengthOfLongestSubstringTwoDistinct = function(s) {
     }
     return maxLen;
 };
+//Method 2
+var lengthOfLongestSubstringTwoDistinct = function(s) {
+    let longest = 0;
+
+    for (let i = 0; i < s.length; i++) {
+
+        // Optimize for O(n) time to avoid O(n^2)
+        if (longest > s.length - i) return longest;
+
+        let map = new Set();
+        let distinct = 1;
+        let len = 1;
+        map.add(s.charAt(i));
+        for (let j = i+1; j < s.length; j++) {
+            if (!map.has(s.charAt(j))) {
+                distinct += 1;
+            }
+            if (distinct > 2) break;
+            map.add(s.charAt(j));
+            len++;
+        }
+        longest = Math.max(longest, len);
+    }
+
+    return longest;
+};
