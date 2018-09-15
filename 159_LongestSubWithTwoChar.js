@@ -81,3 +81,38 @@ var lengthOfLongestSubstringTwoDistinct = function(s) {
 
     return longest;
 };
+
+//Method 3
+var lengthOfLongestSubstringTwoDistinct = function(s) {
+  var chars = new Map();
+  var start = 0;
+  var end = 0;
+  var maxLen = 0;
+
+   while (end < s.length) {
+       var c = s.charAt(end);
+       if (!chars.has(c)) {
+           chars.set(c, 1);
+       } else {
+           chars.set(c, chars.get(c) + 1);
+       }
+
+       while (chars.size > 2) {
+           var toRemove = s.charAt(start);
+
+           var count = chars.get(toRemove);
+           if (count == 1) {
+               chars.delete(toRemove);
+           } else {
+               chars.set(toRemove, count - 1);
+           }
+
+           ++start;
+       }
+
+       maxLen = Math.max(maxLen, end - start + 1);
+       ++end;
+   }
+
+ return maxLen;
+};
