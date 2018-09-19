@@ -26,6 +26,8 @@ var lengthOfLongestSubstringTwoDistinct = function(s) {
     // let maxj=0;
     let i=0;
     let second=-1;
+    // let fcount=0
+    // let scount=0;
     while(i<s.length-1){
         for (let j=i+1;j<s.length;j++) {
             while (j<s.length&&s[i]===s[j]){
