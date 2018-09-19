@@ -64,18 +64,15 @@ var totalFruit = function(tree) {
     let maxCount=0;
     let count=1;
     for(let i=0; i<tree.length-1;i++) {
-         //let first = tree[i];
         for(let j=i+1; j<tree.length-1;j++){
-             //let j=i+1;
              while (j<tree.length&&tree[j]===tree[i]){
                  count++;
                  j++;
              }
             let sec=tree[j]
-             while (j<tree.length && (tree[j]===sec || tree[j]===tree[i])){
+            while (j<tree.length && (tree[j]===sec || tree[j]===tree[i])){
                  j++;
             }
-            //console.log(j);
             maxCount=Math.max(maxCount,j-i);
             break;
         }
