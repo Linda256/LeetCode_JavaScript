@@ -16,8 +16,10 @@ If you have figured out the O(n) solution, try coding another solution using the
 @param {number[]} nums
 @return {number}
 */
-//method 1: naive method.
-// time complexity O(n*n)
+/*
+****   Method 1: naive method. ****
+       time complexity O(n*n)
+*/
 var maxSubArray=function(nums){
   let maxSum=nums[0];
   for(let i=0;i<nums.length-1;i++){
@@ -30,9 +32,19 @@ var maxSubArray=function(nums){
   return maxSum;
 }
 
+/****    Method 2 ***********/
+//Time Complexity O(n);
 
+var maxSubArray2=function(A){
+  let maxSum=A[0], maxEndingHere=A[0];
+  for (let i=1;i<A.length;i++){
+    maxEndingHere=Math.max(maxEndingHere+A[i],A[i]);
+    maxSum=Math.max(maxSum,maxEndingHere);
+  }
+  return maxSum;
+}
 
-//let nums=[-2,1,-3,4,-1,2,1,-5,4];
+let nums=[-2,1,-3,4,-1,2,1,-5,4];
 //let nums=[-2,1];
-let nums=[10,-2,-3,-2];
-console.log(maxSubArray(nums));
+//let nums=[10,-2,-3,-2];
+console.log(maxSubArray2(nums));
