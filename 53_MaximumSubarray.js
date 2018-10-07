@@ -33,8 +33,10 @@ var maxSubArray=function(nums){
 }
 
 /****    Method 2 ***********/
-//Time Complexity O(n);
+/*Time Complexity O(n)*/
 
+//choose the bigger of current item and the previous max ending here + current item as current maxEndingHere
+// update maxSum if current maxEndingHere > maxSum
 var maxSubArray2=function(A){
   let maxSum=A[0], maxEndingHere=A[0];
   for (let i=1;i<A.length;i++){
