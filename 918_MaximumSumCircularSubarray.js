@@ -69,7 +69,27 @@ var maxSubarraySumCircular = function(A) {
     return maxSum;;
 }
 
-let arr=[2,-2,2,7,8,0];
+//Method 2. O(n) calculate maxSum and minSum.
+//if the max sub array is the middle of the circular array, calculate  the max sub array as normal array(get the maxSum)
+//if the max sub array is not at middel, but the combination the begining and ending array. That means the middle of circular array has the minimum sum sub array. Calulate  the minimum sum of the circular array sub array and the total of the circular array
+//if the maximum>0
+//  return the maximum of teh maxSum and the total-miniMax
+//  else return maximum.
+
+var maxSubarraySumCircular2=function(A){
+  let currMax=A[0], maxSum=A[0],minSum=A[0],currMin=A[0],total=A[0];
+  for (let i=1;i<A.length;i++){
+    currMax=Math.max(currMax+A[i],A[i]);
+    maxSum=Math.max(currMax,maxSum);
+    currMin=Math.min(currMin+A[i],A[i]);
+    minSum=Math.min(minSum,currMin);
+    total+=A[i];
+  }
+  return maxSum<0 ?  maxSum : Math.max(maxSum,total-minSum);
+}
+
+//let arr=[2,-2,2,7,8,0];
 //let arr=[5,-3,5];
-//let arr=[-2,-3,-1];
-console.log(maxSubarraySumCircular(arr));
+//let arr=[0,5,8,-9,9,-7,3,-2];
+let arr=[-2,-3,-1];
+console.log(maxSubarraySumCircular2(arr));
