@@ -88,8 +88,23 @@ var maxSubarraySumCircular2=function(A){
   return maxSum<0 ?  maxSum : Math.max(maxSum,total-minSum);
 }
 
-//let arr=[2,-2,2,7,8,0];
+//Method 3
+var maxSubarraySumCircular3=function(A){
+    let currMax=0,currMin=0,total=0,maxSum=Number.NEGATIVE_INFINITY,minSum=Number.POSITIVE_INFINITY;
+    for (let i=0;i<A.length;i++){
+        currMax+=A[i];
+        currMin+=A[i];
+        maxSum=Math.max(currMax,maxSum);
+        minSum=Math.min(currMin,minSum);
+        if (currMax<0) currMax=0;
+        if (currMin>0) currMin=0;
+        total+=A[i];
+    }
+    return maxSum<0 ? maxSum : Math.max(maxSum,total-minSum);
+}
+let arr=[2,-2,2,7,8,0];
 //let arr=[5,-3,5];
 //let arr=[0,5,8,-9,9,-7,3,-2];
-let arr=[-2,-3,-1];
+//let arr=[-2,-3,-1];
 console.log(maxSubarraySumCircular2(arr));
+console.log(maxSubarraySumCircular3(arr));
