@@ -88,7 +88,7 @@ var maxSubarraySumCircular2=function(A){
   return maxSum<0 ?  maxSum : Math.max(maxSum,total-minSum);
 }
 
-//Method 3
+//Method 3, O(n)
 var maxSubarraySumCircular3=function(A){
     let currMax=0,currMin=0,total=0,maxSum=Number.NEGATIVE_INFINITY,minSum=Number.POSITIVE_INFINITY;
     for (let i=0;i<A.length;i++){
