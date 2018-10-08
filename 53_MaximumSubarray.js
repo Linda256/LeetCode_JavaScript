@@ -46,7 +46,23 @@ var maxSubArray2=function(A){
   return maxSum;
 }
 
+/**** Method 3 ***********/
+/* O(n) */
+//check if the current sum have negative value, set the current sum to 0;
+var maxSubArray3=function(A){
+  let maxSum = Number.NEGATIVE_INFINITY;
+  let currentSum = 0;
+  for (let i=0;i<A.length;i++){
+    currSum+=A[i];
+    maxSum=Math.max(maxSum,currSum);
+    if (currSum<0) currSum=0;
+  }
+  return maxSum;
+}
+
+
 let nums=[-2,1,-3,4,-1,2,1,-5,4];
 //let nums=[-2,1];
 //let nums=[10,-2,-3,-2];
 console.log(maxSubArray2(nums));
+console.log(maxSubArray3(nums));
