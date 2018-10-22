@@ -14,33 +14,27 @@ O:number
 C: O(n)
 E:""
 */
-/*
-if s = '' return 0
-let visited={}
-let j=0;
-let biggest = 0;
-loop through s
-  if visited contains s[i]
-    j=Math.max(j,i+1);
-  visited[s[i]] = i;
-  biggest = Math.max(biggest, i-j+1)
-return biggest;
 
+//initiate maxSub=0, object visited to store letter as key and position as value
+    //loop through s (two pointer, i,j)
+        //if s[i] is in visited
+            // move j forward to 1 position after s[i] previous position if the position is greater than j current position
+        //update s[i] position if it in visited or put s[i] to visited if not
+        //calculate currMax = i-j+1
+        // update maxSub if currMax>maxSub
+//return maxSub;
 
-*/
 function longestSubstring(s){
-  if (s.length===0) return 0;
-  let visited={}
-  let j=0;
-  let biggest = 0;
-  for (let i=0; i<s.length; i++){
-    if (visited.hasOwnProperty(s[i])){
-      j=Math.max(j,visited[s[i]]+1);
+  let maxSub=0, visited={};
+    for (let i=0,j=0;i<s.length;i++){
+        if (visited.hasOwnProperty(s[i])){
+            j = Math.max(j,visited[s[i]]+1);
+        }
+        visited[s[i]]=i;
+        let currMax = i-j+1;
+        maxSub=Math.max(maxSub,currMax);
     }
-    visited[s[i]] = i;
-    biggest = Math.max(biggest, i-j+1)
-  }
-  return biggest;
+    return maxSub;
 }
 
 let s="abcabcbbefgh";
