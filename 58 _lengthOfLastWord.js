@@ -30,6 +30,11 @@ var lengthOfLastWord2 = function(s) {
     return sTrim.length-1-start;
 };
 
+var lengthOfLastWord3 = function(s) {
+  let words = s.match(/\w+/g);
+  return words ? words[words.length - 1].length : 0
+};
+
 //let input= "Hello World";
 let input= "a     ";
 let res = lengthOfLastWord(input);
