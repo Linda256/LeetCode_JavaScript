@@ -78,3 +78,24 @@ var sortedSquares2 = function(A) {
     return result;
     
 }
+
+//method 3 two points
+var sortedSquares = function(A) { 
+    let end=A.length-1;
+    let k=A.length-1;
+    let start = 0;
+    let result=[];
+    while(k>=0){
+        if (Math.abs(A[start])>Math.abs(A[end])){
+            result[k]=A[start]*A[start];
+            start++;
+        }
+        else{
+            result[k]=A[end]*A[end];
+            end--
+        }
+        k--;
+    }
+    return result;
+}
+
