@@ -20,9 +20,9 @@ var addToArrayForm = function(A, K) {
     let n=KArr.length-1;
     let adjust=0;
     let k=A.length-1;
-    let total=1;
+    let total=0;
         
-    while(k>=0 && (total>0||adjust>0||n>=0)){
+    while(k>=0 && (adjust>0||n>=0)){
         if(n>=0){
             total=A[k]+ KArr[n]+adjust;
         }else{
@@ -34,7 +34,7 @@ var addToArrayForm = function(A, K) {
             adjust=1;
             total=total-10;   
         }
-        if (total>=0) A[k]=total;
+        A[k]=total;
         console.log(A[k]);
         k--;
     }
