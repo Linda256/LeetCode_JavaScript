@@ -19,6 +19,7 @@ Given 1->2->3->4, you should return the list as 2->1->4->3.
  * @param {ListNode} head
  * @return {ListNode}
  */
+ //method 1 using while loop
 var swapPairs = function(head) {
     let newHead=new ListNode(0);
     newHead.next=head;
@@ -33,5 +34,24 @@ var swapPairs = function(head) {
         curr=curr.next;
     }
     return newHead.next;
+};
+
+//method 2 using recursion
+var swapPairs = function(head) {
+    let newHead=new ListNode(0);
+    newHead.next=head;
+    let prev=newHead;
+    let curr=head;
+    swapNodes(newHead,prev,curr);
+    return newHead.next;
 
 };
+
+function swapNodes(head,prev,curr){
+    if(curr===null || curr.next===null) return;
+    let temp=curr.next;
+    prev.next=temp;
+    curr.next=temp.next;
+    temp.next=curr;
+    swapNodes(head,curr,curr.next);
+}
