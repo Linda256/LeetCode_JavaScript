@@ -43,7 +43,6 @@ var sumRootToLeaf = function(root) {
 };
 
 function rootToLeaf(root,result,str){
-    if(root===null) return;
     if(root.left===null && root.right===null){
         result.push(str);
     }
@@ -53,5 +52,4 @@ function rootToLeaf(root,result,str){
     if(root.right){
         rootToLeaf(root.right,result,str+root.right.val)
     }
-
 }
