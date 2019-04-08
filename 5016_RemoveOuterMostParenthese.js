@@ -57,26 +57,25 @@ var removeOuterParentheses = function(S) {
         //}
     //loop through temp, remove item[0], removeitem[item.length]
     //join temp
-    let stack=[];
-    let temp=[];
-    let start=0;
-       for (let i=0;i<S.length;i++){
-           if (S[i]==='('){
-               stack.push(')')
-           } else if (S[i]===")"){
-               stack.pop ();
-           }
-           if (stack.length===0){
-              temp.push(S.substring(start,i+1));
-              start=i+1;
-          }
-        }
-        temp=temp.map(item=>{
-            item=item.substring(1,item.length-1);
-            return item;
-        })
-        return temp.join('');
-
+  let stack=[];
+  let temp=[];
+  let start=0;
+  for (let i=0;i<S.length;i++){
+     if (S[i]==='('){
+         stack.push(')')
+     } else if (S[i]===")"){
+         stack.pop ();
+     }
+     if (stack.length===0){
+        temp.push(S.substring(start,i+1));
+        start=i+1;
+    }
+  }
+  temp=temp.map(item=>{
+      item=item.substring(1,item.length-1);
+      return item;
+  })
+  return temp.join('');
 };
 
 let S="(()())(())";
