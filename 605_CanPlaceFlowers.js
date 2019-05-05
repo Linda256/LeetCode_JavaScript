@@ -27,6 +27,28 @@ C: O(n)
 E: n  > flowerbed.length/2+1? ;  n=0 ; flowerbed = [0] n=1
 
 */
+
+var canPlaceFlowers2 = function(flowerbed, n) {
+    if(n===0){
+        return true;
+      }
+    flowerbed.unshift(0);
+    flowerbed.push(0)
+    let i=1;
+    while(n>0 &&i<flowerbed.length-1){
+      if (flowerbed[i-1]===0 && flowerbed[i+1]===0 && flowerbed[i]!==1){
+        n--;
+        flowerbed[i]=1;
+        i=i++;
+       } 
+      if(n===0){
+        return true;
+      }
+      i++;
+    }   
+    return false;    
+};
+
 var canPlaceFlowers = function(flowerbed, n) {
     if (n===0 || (flowerbed[0]===0 && n===1 && flowerbed.length===1) ) return true;
     if (n>flowerbed.length/2+1) return false;
