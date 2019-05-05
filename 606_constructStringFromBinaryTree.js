@@ -65,3 +65,26 @@ var tree2str = function(t) {
         return t.val+"("+tree2str(t.left)+")";
     return t.val+"("+tree2str(t.left)+")("+tree2str(t.right)+")";
 };
+
+//method 1
+var tree2str = function(t) {
+  let str="";
+  str= makeStr(t,str);
+  return str;  
+};
+
+function makeStr(t,str){
+  if(t===null) return str;
+  if(t.left===null&&t.right===null){
+      str=str+t.val
+      return str; 
+  } 
+  if(t.left&&t.right){
+      str=t.val+"("+makeStr(t.left,str)+")"+"("+makeStr(t.right,str)+")";
+  }else if(t.left){
+      str=t.val+"("+makeStr(t.left,str)+")";
+  }else if(t.right){
+      str=t.val+"()"+"("+makeStr(t.right,str)+")";
+  }
+  return str;
+}
