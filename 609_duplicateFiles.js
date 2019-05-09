@@ -70,3 +70,7 @@ var findDuplicate = function(paths) {
     return res;  
 };
 
+let paths=["root/a 1.txt(abcd) 2.txt(efsfgh)","root/c 3.txt(abdfcd)","root/c/d 4.txt(efggdfh)"];
+let res=findDuplicate(paths);
+console.log(res);
+
