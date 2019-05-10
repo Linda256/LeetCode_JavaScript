@@ -59,3 +59,26 @@ var levelOrderBottom = function(root) {
     })
     return res;   
 };
+
+//method 2
+var levelOrderBottom = function(root) {
+    let queue=[], resArr=[]; 
+    if(!root)
+        return [];
+    queue.push(root);
+    while(queue.length>0)
+    {
+        let arr=[], length=queue.length;
+        //add the val to arr if they are in same level
+        for(let i=0; i<length; i++){ 
+            let tempNode= queue.shift();
+            if(tempNode.left!=null)
+                queue.push(tempNode.left);
+            if(tempNode.right!=null)
+                queue.push(tempNode.right);
+            arr.push(tempNode.val);
+        }
+        resArr.unshift(arr);
+    }
+    return resArr;    
+};
