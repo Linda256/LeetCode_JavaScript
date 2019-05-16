@@ -27,6 +27,15 @@ Explanation: There are three ways to climb to the top.
  * @param {number} n
  * @return {number}
  */
+
+//method 1 without memoization
+var climbStairs = function(n) {
+    if(n===1) return 1;
+    if(n===2) return 2;
+    return climbStairs(n-1)+climbStairs(n-2);  
+};
+
+//method 2 with memoization
 var climbStairs = function(n) {
     let meno=[];
     meno.forEach(n=>n=-1);
