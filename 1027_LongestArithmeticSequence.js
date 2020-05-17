@@ -35,6 +35,7 @@ Note:
 var longestArithSeqLength = function(A) {
     let longestSeq=0;
     for(let i=0;i<A.length-1;i++){
+      if(longestSeq>A.length-i) break;
       for(let j=i+1;j<A.length;j++){
         let diff = A[j]-A[i];
         let currSeq=2;
