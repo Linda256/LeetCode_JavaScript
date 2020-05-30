@@ -32,8 +32,22 @@ const containsDuplicate2 = (arr) => {
   return arr.sort((a, b) => a - b).some((a, i) => a === arr[i - 1]);
 };
 
+//sort
+const containsDuplicate3 = (nums) => {
+  let nums1 = [...nums];
+  nums1.sort((a, b) => {
+    return a - b;
+  });
+  for (let i = 0; i < nums1.length - 1; i++) {
+    if (nums1[i] === nums1[i + 1]) {
+      return true;
+    }
+  }
+  return false;
+};
+
 //obj
-const containsDuplicate3 = (arr) => {
+const containsDuplicate4 = (arr) => {
   let obj = {};
   for (let i = 0; i < arr.length; i++) {
     obj[arr[i]] = obj[arr[i]] === undefined ? false : true;
@@ -44,5 +58,9 @@ const containsDuplicate3 = (arr) => {
 };
 
 let arr = [1, 2, 3, 1];
+console.log("JSON.stringify(arr)", JSON.stringify(arr));
+let arr2 = [1, 2, 3, 1];
+console.log("arr===arr2", arr === arr2); //false
+console.log("JSON.stringify(arr) ===JSON.stringify(arr2)", JSON.stringify(arr) === JSON.stringify(arr2)); //true
 //let arr = [1, 2, 3, 4];
 console.log(containsDuplicate3(arr));
