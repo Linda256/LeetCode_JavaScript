@@ -19,30 +19,31 @@ Input: ["H","a","n","n","a","h"]
 Output: ["h","a","n","n","a","H"]
 */
 
-const reverseStr=function(s,i,j){
-    if (i>j) return
-    let temp=s[i];
-    s[i]=s[j];
-    s[j]=temp;
-    reverseStr(s,i+1,j-1);
-}
+const reverseStr = function (s, i, j) {
+  if (i > j) return;
+  let temp = s[i];
+  s[i] = s[j];
+  s[j] = temp;
+  reverseStr(s, i + 1, j - 1);
+};
 
-const reverseString = function(s) {
-    let i=0,j=s.length-1;
-    reverseStr(s,i,j);
-    return s;
-}
+const reverseString = function (s) {
+  let i = 0,
+    j = s.length - 1;
+  reverseStr(s, i, j);
+  return s;
+};
 
 //using while loop
-const reverseString = function(s) {
-    let i=0,j=s.length-1;
-    while(i<j){
-        let temp=s[i];
-        s[i]=s[j];
-        s[j]=temp;
-        i++;
-        j--;
-    }
-    return s;
-
-}
+const reverseString = function (s) {
+  let i = 0,
+    j = s.length - 1;
+  while (i < j) {
+    let temp = s[i];
+    s[i] = s[j];
+    s[j] = temp;
+    i++;
+    j--;
+  }
+  return s;
+};
