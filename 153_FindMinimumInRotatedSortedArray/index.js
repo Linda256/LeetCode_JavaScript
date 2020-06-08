@@ -40,16 +40,16 @@ const findMin = (nums) => {
   if (nums.length < 1) {
     return null;
   }
+  if (nums.length === 1) return nums[0];
   let lo = 0;
   let hi = nums.length - 1;
-
   while (lo <= hi) {
-    let mid = Math.floor((lo + hi) / 2);
-    if ((nums[mid - 1] > nums[mid] && nums[mid + 1] > nums[mid]) || mid === nums.length - 1) {
+    let mid = Math.floor((hi + lo) / 2);
+    if (nums[mid - 1] > nums[mid]) {
       return nums[mid];
-    } else if (nums[mid] > nums[hi]) {
+    } else if (nums[hi] < nums[mid]) {
       lo = mid + 1;
-    } else if (nums[mid] <= nums[hi]) {
+    } else {
       hi = mid - 1;
     }
   }
