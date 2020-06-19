@@ -24,7 +24,34 @@ Output: -1
  * @param {number} target
  * @return {number}
  */
+
 var search = function (nums, target) {
+  let lo = 0;
+  let hi = nums.length - 1;
+  while (lo <= hi) {
+    let mid = Math.floor((lo + hi) / 2);
+    if (nums[mid] === target) {
+      return mid;
+    }
+    if (
+      (nums[mid] > nums[lo] && target < nums[mid] && target >= nums[lo]) || //pivot is not on left; left is a normal sorted array; target is between nums[lo] and nums[mid].
+      (nums[mid] < nums[lo] && target > nums[hi]) || //pivot is on left, right is a normal sorted array. nums[hi] is the largest one of the array
+      (nums[mid] < nums[lo] && target < nums[mid]) //pivor is on left, right is a normal sorted array. nums[mid] is the smallest one of the array
+    ) {
+      hi = mid - 1;
+    } else {
+      lo = mid + 1;
+    }
+  }
+  return -1;
+};
+
+/************************************************************
+ * find pivot index,
+ * divided the array into two parts
+ * binary search the one could have the target
+ *  */
+var search1 = function (nums, target) {
   const pivotIndex = getPivotIndex(nums);
   if (nums[pivotIndex] === target) {
     return pivotIndex;
