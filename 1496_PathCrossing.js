@@ -13,7 +13,7 @@ var isPathCrossing = function (path) {
   let y = 0;
   let x = 0;
   let visited = new Map();
-  visited.set(x, [y]);
+  visited.set(`${x}, ${y}`, true);
   for (let i = 0; i < path.length; i++) {
     switch (path[i]) {
       case "N":
@@ -30,21 +30,14 @@ var isPathCrossing = function (path) {
         break;
     }
 
-    if (visited.get(x)) {
-      if (visited.get(x).indexOf(y) > -1) {
-        return true;
-      } else {
-        visited.set(x, [...visited.get(x), y]);
-      }
-    } else {
-      visited.set(x, [y]);
+    if (visited.has(`${x}, ${y}`)) {
+      return true;
     }
-
-    console.log("visited", visited);
+    visited.set(`${x}, ${y}`, true);
   }
   return false;
 };
 
-//let path = "NESWW";
-let path = "NES";
+let path = "NESWW";
+//let path = "NES";
 console.log(isPathCrossing(path));
